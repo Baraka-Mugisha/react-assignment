@@ -1,35 +1,37 @@
-name: CI Workflow
+name: CI
 
-# Run this workflow on push and pull request events for the main branch
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: "18"
 
-      - name: Install Dependencies
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Run Linting
+      - name: Run linting
         run: npm run lint
 
-      - name: Run Tests
-        run: npm run test
-
-      - name: Build Project
-        run: npm run build
+      - name: Run tests
+        run: npm test

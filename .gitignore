@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 .vite/
 *.tsbuildinfo
+fileTransformer.cjs
+svgTransform.cjs
