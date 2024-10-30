@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import PageHeader from "./PageHeader";
+import TaskDetails from "./TaskDetails";
 import TaskListHeader from "./Tabs";
 import { tasks } from "../data/tasks";
 
@@ -55,6 +56,15 @@ const TaskList: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {selectedTask && (
+        <div
+          ref={overlayRef}
+          className="fixed top-0 right-0 h-full w-full md:w-96 bg-white dark:bg-gray-800 shadow-lg p-6 z-50 overflow-y-auto transition-all duration-300"
+        >
+          <TaskDetails task={selectedTask} />
+        </div>
+      )}
     </div>
   );
 };
