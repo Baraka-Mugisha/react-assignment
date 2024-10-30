@@ -4,10 +4,11 @@ import PageHeader from "./PageHeader";
 import TaskDetails from "./TaskDetails";
 import TaskListHeader from "./Tabs";
 import { tasks } from "../data/tasks";
+import { Task } from "../types/common";
 
 const TaskList: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("All Tasks");
-  const [selectedTask, setSelectedTask] = useState<any | null>(null);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const filteredTasks =
