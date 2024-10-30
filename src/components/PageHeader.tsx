@@ -1,31 +1,13 @@
 import React from "react";
 import { Link2, Unlock, ChevronDown, Plus } from "react-feather";
+import { members } from "../data/users";
 
 const PageHeader: React.FC = () => {
-  const members = [
-    {
-      id: 1,
-      avatarUrl: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-    {
-      id: 2,
-      avatarUrl: "https://randomuser.me/api/portraits/women/2.jpg",
-    },
-    {
-      id: 3,
-      avatarUrl: "https://randomuser.me/api/portraits/men/3.jpg",
-    },
-    {
-      id: 4,
-      avatarUrl: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
-  ];
-
   return (
     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-10  p-6">
       <div className="w-full lg:w-autoo mb-4 lg:mb-0">
         <div className="flex flex-col lg:flex-row justify-between w-full lg:w-auto">
-          <nav className="text-sm text-gray-400 dark:text-gray-300 space-x-4 mb-2 text-left font-medium">
+          <nav className="text-lg text-gray-400 dark:text-gray-300 space-x-4 mb-2 text-left font-medium">
             <span>Workspace</span>
             <span>&gt;</span>
             <span>Creative</span>
@@ -46,7 +28,7 @@ const PageHeader: React.FC = () => {
             </div>
           </div>
         </div>
-        <h6 className="text-4xl font-bold text-left text-black dark:text-white">
+        <h6 className="text-5xl font-bold text-left text-black dark:text-white">
           Website Design
         </h6>
         <div className="flex flex-wrap items-center justify-between mt-4 space-y-2 lg:space-y-0">
