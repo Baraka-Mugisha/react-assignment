@@ -21,10 +21,10 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         <span
           className={`px-3 py-1 rounded-md text-sm font-semibold h-max ${
             task.status === "To do"
-              ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-600 dark:text-yellow-100"
+              ? "bg-orange-50 text-yellow-600 dark:bg-orange-600 dark:text-yellow-100"
               : task.status === "In Progress"
-              ? "bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-blue-100"
-              : "bg-green-100 text-green-800 dark:bg-green-600 dark:text-green-100"
+              ? "bg-blue-50 text-blue-400 dark:bg-blue-500 dark:text-blue-100"
+              : "bg-green-100 text-green-600 dark:bg-green-600 dark:text-green-100"
           }`}
         >
           {task.status}

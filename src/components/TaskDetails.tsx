@@ -161,12 +161,13 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task }) => {
             />
             <div
               onClick={handleSendMessage}
-              className="p-2 flex gap-2 cursor-pointer"
+              className="p-2 flex gap-3 cursor-pointer"
             >
               <Mic
                 size={20}
                 className="text-gray-400 hover:text-indigo-500 dark:text-gray-400"
               />
+              <div className="w-0.5 bg-gray-300"></div>
               <Send
                 size={20}
                 className="text-indigo-600 dark:text-indigo-400"

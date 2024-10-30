@@ -36,7 +36,7 @@ const TaskTabs: React.FC<TaskTabsProps> = ({
           <div
             key={tab.label}
             onClick={() => setSelectedTab(tab.label)}
-            className={`relative text-gray-400 dark:text-gray-500 py-2 sm:py-4 transition-all cursor-pointer ${
+            className={`relative text-gray-400 dark:text-gray-500 py-2 sm:py-6 transition-all cursor-pointer sm:text-xl ${
               selectedTab === tab.label
                 ? "text-indigo-700 dark:text-indigo-400"
                 : "hover:text-gray-700 dark:hover:text-gray-300"
@@ -44,7 +44,7 @@ const TaskTabs: React.FC<TaskTabsProps> = ({
           >
             {tab.label}
             <span
-              className={`ml-2 py-0.5 px-2 rounded-md text-xs sm:text-sm ${
+              className={`ml-2 py-0.5 px-2 rounded-md ${
                 selectedTab === tab.label
                   ? "bg-indigo-100 text-indigo-800 dark:bg-indigo-500 dark:text-indigo-100"
                   : "text-gray-400 bg-gray-100 dark:bg-gray-700 dark:text-gray-300"
@@ -62,13 +62,13 @@ const TaskTabs: React.FC<TaskTabsProps> = ({
       <div className="flex flex-wrap items-center justify-end space-x-3">
         <div className="flex items-center px-3 py-2 sm:px-4 sm:py-1.5 border-gray-100 dark:border-gray-700 border-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all cursor-pointer text-gray-500 dark:text-gray-300 mb-2 sm:mb-0">
           <Filter className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="text-sm sm:text-base font-medium">
+          <span className="text-sm sm:text-xl font-medium">
             Filter & Sort
           </span>
         </div>
         <div className="flex items-center px-3 py-2 sm:px-4 sm:py-1.5 text-gray-500 dark:text-gray-300 border-gray-100 dark:border-gray-700 border-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all cursor-pointer">
           <Plus className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="text-sm sm:text-base">New Task</span>
+          <span className="text-sm sm:text-xl">New Task</span>
         </div>
       </div>
     </div>
