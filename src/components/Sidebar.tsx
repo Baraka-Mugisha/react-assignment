@@ -9,34 +9,7 @@ import {
   Settings,
   Plus,
 } from "react-feather";
-
-interface User {
-  id: number;
-  name: string;
-  avatarUrl: string;
-  isOnline: boolean;
-}
-
-const users: User[] = [
-  {
-    id: 1,
-    name: "User 1",
-    avatarUrl: "https://randomuser.me/api/portraits/women/68.jpg",
-    isOnline: true,
-  },
-  {
-    id: 2,
-    name: "User 2",
-    avatarUrl: "https://randomuser.me/api/portraits/men/29.jpg",
-    isOnline: true,
-  },
-  {
-    id: 3,
-    name: "User 3",
-    avatarUrl: "https://randomuser.me/api/portraits/women/65.jpg",
-    isOnline: false,
-  },
-];
+import { users } from "../data/users";
 
 const Sidebar: React.FC = () => {
   return (
