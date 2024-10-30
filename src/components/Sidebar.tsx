@@ -1,4 +1,3 @@
-// src/components/Sidebar.tsx
 import React from "react";
 import {
   Home,
@@ -42,7 +41,6 @@ const users: User[] = [
 const Sidebar: React.FC = () => {
   return (
     <div className="bg-white dark:bg-gray-800 h-screen w-24 py-6 flex flex-col items-center shadow-md">
-      {/* Top Section - Logo */}
       <div className="mb-12">
         <img
           src="https://via.placeholder.com/50"
@@ -51,7 +49,6 @@ const Sidebar: React.FC = () => {
         />
       </div>
 
-      {/* Middle Section - Navigation Icons */}
       <div className="flex flex-col items-center space-y-0 mb-16 w-full">
         <div className="text-gray-400 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer h-16 flex items-center justify-center">
           <Home size={28} />
@@ -64,7 +61,6 @@ const Sidebar: React.FC = () => {
           <FileText size={28} />
         </div>
 
-        {/* Folder Icon with Linear Gradient Background */}
         <div className="relative w-full flex items-center justify-center h-16">
           <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-indigo-100 to-indigo-0 opacity-60" />
           <span className="absolute left-0 h-full w-1.5 bg-indigo-600 dark:bg-indigo-400 rounded-r-2xl"></span>
@@ -78,10 +74,8 @@ const Sidebar: React.FC = () => {
         </span>
       </div>
 
-      {/* Divider */}
       <div className="w-full h-px bg-gray-200 dark:bg-gray-600 mb-8"></div>
 
-      {/* Bottom Section - Online Users */}
       <div className="flex flex-col items-center space-y-6 mb-16">
         {users.map((user) => (
           <div key={user.id} className="relative">
@@ -95,16 +89,13 @@ const Sidebar: React.FC = () => {
             )}
           </div>
         ))}
-        {/* Add User Button */}
         <div className="w-12 h-12 border-gray-400 dark:border-gray-500 border-[1.5px] border-dashed rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 cursor-pointer">
           <Plus size={24} className="text-gray-500 dark:text-gray-400" />
         </div>
       </div>
 
-      {/* Divider */}
       <div className="w-full h-px bg-gray-200 dark:bg-gray-600 mb-8"></div>
 
-      {/* Bottom Icons (Settings and User Profile) */}
       <div className="flex flex-col items-center space-y-8 mt-auto sticky bottom-6">
         <span className="text-gray-400 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer">
           <Settings size={28} />
