@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Task } from "../types/common";
-import { tasks } from "../data/tasks";
+// import { tasks } from "../data/tasks";
 
 const TODOS_API = "https://dummyjson.com/todos";
 
@@ -11,8 +11,8 @@ const fetchTasks = async (): Promise<Task[]> => {
   }
   const data = await response.json();
   
-  // return data.todos;
-  return tasks;
+  return data.todos;
+  // return tasks;
 };
 
 export const useTasks = () => {
