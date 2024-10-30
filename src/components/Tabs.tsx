@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Filter, Plus } from "react-feather";
 import { Task } from "../types/common";
 

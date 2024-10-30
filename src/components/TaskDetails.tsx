@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { Send, Mic, Calendar, Users, Star } from "react-feather";
-import { User, Task, Comment } from "../types/common";
+import { Task, Comment } from "../types/common";
 
 type TaskDetailsProps = {
   task?: Task;
 };
 
 const TaskDetails: React.FC<TaskDetailsProps> = ({ task }) => {
+  const [messages, setMessages] = useState<Comment[]>([]);
+  const [newMessage, setNewMessage] = useState("");
+
+  useEffect(() => {
+    if (task) {
+      setMessages(task.comments || []);
+    }
+  }, [task]);
+
+  const handleSendMessage = () => {
+    if (newMessage.trim() === "" || !task || task.users.length === 0) return;
+
+    const newMsg: Comment = {
+      id: messages.length + 1,
+      user: task.users[0],
+      time: new Date().toISOString(),
+      content: newMessage,
+    };
+
+    setMessages([...messages, newMsg]);
+    setNewMessage("");
+  };
+
   if (!task) {
     return (
       <div className="text-gray-500 dark:text-gray-400">No task selected</div>
     );
   }
 
-  const { title, description, status, timeline, users, comments } = task;
-
-  const [messages, setMessages] = useState<Comment[]>(comments || []);
-  const [newMessage, setNewMessage] = useState("");
-
-  useEffect(() => {
-    setMessages(comments || []);
-  }, [task]);
-
-  const handleSendMessage = () => {
-    if (newMessage.trim() === "" || users.length === 0) return;
-
-    const newMsg: Comment = {
-      id: messages.length + 1,
-      user: users[0],
-      time: new Date().toISOString(),
-      content: newMessage,
-    };
-    setMessages([...messages, newMsg]);
-    setNewMessage("");
-  };
+  const { title, status, timeline, users } = task;
 
   return (
     <div className="fixed right-0 top-0 h-full w-full md:w-96 bg-white dark:bg-gray-800 rounded-l-3xl shadow-md p-4 md:p-6 z-50 overflow-hidden flex flex-col">
