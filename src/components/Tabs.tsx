@@ -1,6 +1,7 @@
 import React from "react";
 import { Filter, Plus } from "react-feather";
 import { Task } from "../types/common";
+import { useTranslation } from "react-i18next";
 
 type TaskTabsProps = {
   selectedTab: string;
@@ -13,18 +14,20 @@ const TaskTabs: React.FC<TaskTabsProps> = ({
   setSelectedTab,
   tasks,
 }) => {
+  const { t } = useTranslation();
+
   const tabs = [
-    { label: "All Tasks", count: tasks.length },
+    { label: t("allTasks"), count: tasks.length },
     {
-      label: "To do",
+      label: t("toDo"),
       count: tasks.filter((task) => task.status === "To do").length,
     },
     {
-      label: "In Progress",
+      label: t("inProgress"),
       count: tasks.filter((task) => task.status === "In Progress").length,
     },
     {
-      label: "Completed",
+      label: t("completed"),
       count: tasks.filter((task) => task.status === "Completed").length,
     },
   ];
@@ -63,12 +66,12 @@ const TaskTabs: React.FC<TaskTabsProps> = ({
         <div className="flex items-center px-3 py-2 sm:px-4 sm:py-1.5 border-gray-100 dark:border-gray-700 border-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all cursor-pointer text-gray-500 dark:text-gray-300 mb-2 sm:mb-0">
           <Filter className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
           <span className="text-sm sm:text-xl font-medium">
-            Filter & Sort
+            {t("filterAndSort")}
           </span>
         </div>
         <div className="flex items-center px-3 py-2 sm:px-4 sm:py-1.5 text-gray-500 dark:text-gray-300 border-gray-100 dark:border-gray-700 border-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all cursor-pointer">
           <Plus className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="text-sm sm:text-xl">New Task</span>
+          <span className="text-sm sm:text-xl">{t("newTask")}</span>
         </div>
       </div>
     </div>

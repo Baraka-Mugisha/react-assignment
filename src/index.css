@@ -13,6 +13,7 @@
 a {
   @apply font-medium text-blue-600;
 }
+
 a:hover {
   @apply text-blue-500;
 }
@@ -28,9 +29,11 @@ h1 {
 button {
   @apply rounded-lg border border-transparent py-2 px-4 text-base font-medium bg-gray-900 text-white transition-colors cursor-pointer;
 }
+
 button:hover {
   @apply border-blue-500;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -40,11 +43,27 @@ button:focus-visible {
   :root {
     @apply text-gray-800 bg-white;
   }
+
   a:hover {
     @apply text-blue-400;
   }
+
   button {
     @apply bg-gray-100;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @apply text-white bg-gray-900;
+  }
+
+  a:hover {
+    @apply text-blue-400;
+  }
+
+  button {
+    @apply bg-gray-700;
   }
 }
 

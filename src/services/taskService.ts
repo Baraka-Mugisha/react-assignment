@@ -5,11 +5,11 @@ import { tasks } from "../data/tasks";
 const TODOS_API = "https://dummyjson.com/todos";
 
 const fetchTasks = async (): Promise<Task[]> => {
-  const response = await fetch(TODOS_API);
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  const data = await response.json();
+  // const response = await fetch(TODOS_API);
+  // if (!response.ok) {
+  //   throw new Error("Network response was not ok");
+  // }
+  // const data = await response.json();
 
   // return data.todos;
   return tasks;
