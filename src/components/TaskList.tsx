@@ -6,9 +6,11 @@ import TaskListHeader from "./Tabs";
 import { Task } from "../types/common";
 import { useTasks } from "../services/taskService";
 import useTaskStore from "../store/taskStore";
+import { useTranslation } from "react-i18next";
 
 const TaskList: React.FC = () => {
-  const [selectedTab, setSelectedTab] = useState("All Tasks");
+  const { t } = useTranslation();
+  const [selectedTab, setSelectedTab] = useState(t("allTasks"));
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
@@ -22,9 +24,15 @@ const TaskList: React.FC = () => {
   }, [tasks, setTasks]);
 
   const filteredTasks =
-    selectedTab === "All Tasks"
+    selectedTab === t("allTasks")
       ? tasks
-      : tasks?.filter((task) => task.status === selectedTab);
+      : selectedTab === t("toDo")
+      ? tasks?.filter((task) => task.status === "To do")
+      : selectedTab === t("inProgress")
+      ? tasks?.filter((task) => task.status === "In Progress")
+      : selectedTab === t("completed")
+      ? tasks?.filter((task) => task.status === "Completed")
+      : tasks;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -47,8 +55,8 @@ const TaskList: React.FC = () => {
     };
   }, [selectedTask]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading tasks</div>;
+  if (isLoading) return <div>{t("loading")}</div>;
+  if (error) return <div>{t("errorLoadingTasks")}</div>;
 
   return (
     <div className="relative p-4 lg:p-6">
