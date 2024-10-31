@@ -1,42 +1,45 @@
 import React from "react";
 import { Link2, Unlock, ChevronDown, Plus } from "react-feather";
 import { members } from "../data/users";
+import { useTranslation } from "react-i18next";
 
 const PageHeader: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-10  p-6">
-      <div className="w-full lg:w-autoo mb-4 lg:mb-0">
+    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-10 p-6">
+      <div className="w-full mb-4 lg:mb-0">
         <div className="flex flex-col lg:flex-row justify-between w-full lg:w-auto">
           <nav className="text-lg text-gray-400 dark:text-gray-300 space-x-4 mb-2 text-left font-medium">
-            <span>Workspace</span>
+            <span>{t("workspace")}</span>
             <span>&gt;</span>
-            <span>Creative</span>
+            <span>{t("creative")}</span>
             <span>&gt;</span>
             <span className="text-black dark:text-white font-semibold">
-              Creative Website
+              {t("creativeWebsite")}
             </span>
           </nav>
           <div className="text-sm text-gray-500 dark:text-gray-400 mt-2 lg:mt-0">
             <p className="font-semibold text-black dark:text-white text-lg text-right">
-              From 23 April
+              {t("from")} 23 April
             </p>
             <div className="flex items-center space-x-1">
               <span className="h-2 w-2 bg-green-500 rounded-full"></span>
               <span className="text-lg text-gray-400 dark:text-gray-300">
-                Updated 12 min ago
+                {t("updated")} 12 min ago
               </span>
             </div>
           </div>
         </div>
         <h6 className="text-5xl font-bold text-left text-black dark:text-white">
-          Website Design
+          {t("websiteDesign")}
         </h6>
         <div className="flex flex-wrap items-center justify-between mt-4 space-y-2 lg:space-y-0">
           <div className="flex items-center mt-2 space-x-6">
             <div className="flex items-center text-black dark:text-white font-semibold space-x-3">
               <Unlock size={16} className="text-gray-400 dark:text-gray-300" />
               <span className="text-gray-900 dark:text-gray-200">
-                Limited access
+                {t("limitedAccess")}
               </span>
               <ChevronDown className="text-gray-400 dark:text-gray-300" />
             </div>
