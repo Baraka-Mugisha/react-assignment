@@ -11,8 +11,8 @@ const fetchTasks = async (): Promise<Task[]> => {
   }
   const data = await response.json();
   
-  return data.todos;
-  // return tasks;
+  // return data.todos;
+  return tasks;
 };
 
 export const useTasks = () => {
