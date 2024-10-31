@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Task } from "../types/common";
-// import { tasks } from "../data/tasks";
+import { tasks } from "../data/tasks";
 
 const TODOS_API = "https://dummyjson.com/todos";
 
@@ -10,7 +10,7 @@ const fetchTasks = async (): Promise<Task[]> => {
     throw new Error("Network response was not ok");
   }
   const data = await response.json();
-  
+
   // return data.todos;
   return tasks;
 };
@@ -34,7 +34,7 @@ export const useAddTask = () => {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"]);
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
   });
 };
@@ -57,7 +57,7 @@ export const useUpdateTask = () => {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"]);
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
   });
 };
@@ -72,7 +72,7 @@ export const useDeleteTask = () => {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"]);
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
   });
 };
