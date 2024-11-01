@@ -17,7 +17,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task }) => {
   }, [task]);
 
   const handleSendMessage = () => {
-    if (newMessage.trim() === "" || !task || task.users.length === 0) return;
+    if (newMessage.trim() === "" || !task || !task.users || task.users.length === 0) return;
 
     const newMsg: Comment = {
       id: messages.length + 1,
@@ -39,7 +39,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task }) => {
   const { title, status, timeline, users } = task;
 
   return (
-    <div className="fixed right-0 top-0 h-full w-full md:w-96 bg-white dark:bg-gray-800 rounded-l-3xl shadow-md p-4 md:p-6 z-50 overflow-hidden flex flex-col">
+    <div className="fixed right-0 top-0 h-full w-full md:w-[32rem] bg-white dark:bg-gray-800 rounded-l-3xl shadow-md p-4 md:p-6 z-50 overflow-hidden flex flex-col">
       <div className="flex items-center justify-between">
         <h2 className="text-base md:text-xl font-semibold dark:text-white break-words">
           {title}
@@ -55,28 +55,30 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task }) => {
       <div className="flex items-start space-x-4 relative bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden py-4 px-3 my-4">
         <span className="absolute top-6 left-0 h-2/3 w-1.5 bg-indigo-600 dark:bg-indigo-400 rounded-r-md"></span>
         <div className="space-y-4">
-          <div className="flex items-center">
-            <Calendar size={16} className="text-gray-400 mr-2" />
-            <span className="font-medium text-gray-400 dark:text-gray-400 mr-2">
-              Timeline:
-            </span>
-            <span className="text-gray-700 dark:text-gray-200 font-medium">
-              {new Date(timeline.start).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })}{" "}
-              -{" "}
-              {new Date(timeline.end).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })}
-            </span>
-          </div>
+          {timeline && (
+            <div className="flex items-center">
+              <Calendar size={16} className="text-gray-400 mr-2" />
+              <span className="font-medium text-gray-400 dark:text-gray-400 mr-2">
+                Timeline:
+              </span>
+              <span className="text-gray-700 dark:text-gray-200 font-medium">
+                {new Date(timeline.start).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                })}{" "}
+                -{" "}
+                {new Date(timeline.end).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                })}
+              </span>
+            </div>
+          )}
           <div className="flex items-center">
             <Users size={16} className="text-gray-400 mr-2" />
             <span className="font-medium text-gray-400 mr-2">Team:</span>
             <div className="flex -space-x-2">
-              {users.length > 0 ? (
+              {users && users.length > 0 ? (
                 users.map((user) => (
                   <img
                     key={user.id}
@@ -107,13 +109,6 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task }) => {
           <h3 className="text-base md:text-lg font-semibold dark:text-white">
             TeamChat
           </h3>
-          <span className="text-xs md:text-sm text-gray-400 dark:text-gray-500">
-            {new Date().toLocaleDateString("en-US", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </span>
         </div>
 
         <div className="flex-1 overflow-y-auto space-y-4 pr-4">

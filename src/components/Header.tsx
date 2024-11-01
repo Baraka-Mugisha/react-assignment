@@ -43,7 +43,7 @@ const Header: React.FC = () => {
         </span>
       </div>
       <div className="flex items-center space-x-4">
-        <button onClick={toggleTheme} className="dark:bg-gray-700">
+        <button onClick={toggleTheme} className="bg-gray-100 dark:bg-gray-700">
           {isDarkMode ? (
             <Sun className="text-yellow-500" />
           ) : (
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 dark:bg-gray-700"
+            className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700"
           >
             <span>{i18n.language.toUpperCase()}</span>
             <ChevronDown />

@@ -35,5 +35,13 @@
   "allTasks": "Toutes les tâches",
   "toDo": "À faire",
   "inProgress": "En cours",
-  "completed": "Terminé"
+  "completed": "Terminé",
+  "statusToDo": "À faire",
+  "statusInProgress": "En cours",
+  "statusCompleted": "Terminé",
+  "view": "Voir",
+  "edit": "Éditer",
+  "moveToToDo": "Déplacer vers À faire",
+  "moveToCompleted": "Déplacer vers Terminé",
+  "delete": "Supprimer"
 }

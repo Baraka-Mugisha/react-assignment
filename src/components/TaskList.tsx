@@ -14,24 +14,25 @@ const TaskList: React.FC = () => {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const { data: tasks, isLoading, error } = useTasks();
+  const tasks = useTaskStore((state) => state.tasks);
   const setTasks = useTaskStore((state) => state.setTasks);
+  const { data: fetchedTasks, isLoading, error } = useTasks();
 
   useEffect(() => {
-    if (tasks) {
-      setTasks(tasks);
+    if (fetchedTasks) {
+      setTasks(fetchedTasks);
     }
-  }, [tasks, setTasks]);
+  }, [fetchedTasks, setTasks]);
 
   const filteredTasks =
     selectedTab === t("allTasks")
       ? tasks
       : selectedTab === t("toDo")
-      ? tasks?.filter((task) => task.status === "To do")
+      ? tasks.filter((task) => task.status === "To do")
       : selectedTab === t("inProgress")
-      ? tasks?.filter((task) => task.status === "In Progress")
+      ? tasks.filter((task) => task.status === "In Progress")
       : selectedTab === t("completed")
-      ? tasks?.filter((task) => task.status === "Completed")
+      ? tasks.filter((task) => task.status === "Completed")
       : tasks;
 
   useEffect(() => {
@@ -69,12 +70,8 @@ const TaskList: React.FC = () => {
 
       <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 mt-6">
         {filteredTasks?.map((task) => (
-          <div
-            key={task.id}
-            className="mb-6 break-inside-avoid"
-            onClick={() => setSelectedTask(task)}
-          >
-            <TaskCard task={task} />
+          <div key={task.id} className="mb-6 break-inside-avoid">
+            <TaskCard task={task} onView={setSelectedTask} />
           </div>
         ))}
       </div>
@@ -82,7 +79,7 @@ const TaskList: React.FC = () => {
       {selectedTask && (
         <div
           ref={overlayRef}
-          className="fixed top-0 right-0 h-full w-full md:w-96 bg-white dark:bg-gray-800 shadow-lg p-6 z-50 overflow-y-auto transition-all duration-300"
+          className="fixed top-0 right-0 h-full bg-transparent dark:bg-gray-800 shadow-lg p-6 z-50 overflow-y-auto transition-all duration-300"
         >
           <TaskDetails task={selectedTask} />
         </div>

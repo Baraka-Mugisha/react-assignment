@@ -22,15 +22,16 @@ export type Attachment = {
 export type Task = {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   status: "To do" | "In Progress" | "Completed";
-  timeline: {
+  timeline?: {
     start: string;
     end: string;
   };
-  users: User[];
-  comments: Comment[];
+  users?: User[];
+  comments?: Comment[];
   coverImageUrl?: string;
-  createdAt: string;
+  createdAt?: string;
   updatedAt?: string;
+  userId?: number;
 };

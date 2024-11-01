@@ -35,5 +35,13 @@
   "allTasks": "All Tasks",
   "toDo": "To do",
   "inProgress": "In Progress",
-  "completed": "Completed"
+  "completed": "Completed",
+  "statusToDo": "To do",
+  "statusInProgress": "In Progress",
+  "statusCompleted": "Completed",
+  "view": "View",
+  "edit": "Edit",
+  "moveToToDo": "Move to To Do",
+  "moveToCompleted": "Move to Completed",
+  "delete": "Delete"
 }

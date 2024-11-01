@@ -16,9 +16,9 @@ const Sidebar: React.FC = () => {
     <div className="bg-white dark:bg-gray-800 h-screen w-24 py-6 flex flex-col items-center shadow-md">
       <div className="mb-12">
         <img
-          src="https://via.placeholder.com/50"
+          src="https://logosandtypes.com/wp-content/uploads/2023/03/clickup.svg"
           alt="Logo"
-          className="rounded-full"
+          className="rounded-full h-12 w-12"
         />
       </div>
 
